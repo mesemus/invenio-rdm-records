@@ -305,6 +305,11 @@ class RDMRecordPermissionPolicy(RecordPermissionPolicy):
     # correct permissions based on which the field will be exposed only to moderators
     can_moderate = [Disable()]
 
+    #
+    # File transfer - fetch etc.
+    can_draft_get_file_transfer_metadata = [SystemProcess()]
+    can_draft_update_file_transfer_metadata = [SystemProcess()]
+
 
 guest_token = IfRequestType(
     GuestAccessRequest, then_=[GuestAccessRequestToken()], else_=[]
