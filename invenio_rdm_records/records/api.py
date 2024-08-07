@@ -64,6 +64,7 @@ from .systemfields import (
 )
 from .systemfields.access.protection import Visibility
 from .systemfields.draft_status import DraftStatus
+from invenio_records_resources.records.systemfields.files.transfer import TransferField
 
 
 #
@@ -279,6 +280,8 @@ class RDMFileDraft(FileRecord):
     model_cls = models.RDMFileDraftMetadata
     record_cls = None  # defined below
 
+    transfer = TransferField()
+
 
 class RDMMediaFileDraft(FileRecord):
     """File associated with a draft."""
@@ -288,6 +291,8 @@ class RDMMediaFileDraft(FileRecord):
 
     # Stores record files processor information
     processor = DictField(clear_none=True, create_if_missing=True)
+
+    transfer = TransferField()
 
 
 def get_quota(record=None):
@@ -400,6 +405,7 @@ class RDMFileRecord(FileRecord):
     model_cls = models.RDMFileRecordMetadata
     record_cls = None  # defined below
 
+    transfer = TransferField()
 
 class RDMMediaFileRecord(FileRecord):
     """Example record file API."""
@@ -409,6 +415,8 @@ class RDMMediaFileRecord(FileRecord):
 
     # Stores record files processor information
     processor = DictField(clear_none=True, create_if_missing=True)
+
+    transfer = TransferField()
 
 
 class RDMRecord(CommonFieldsMixin, Record):
